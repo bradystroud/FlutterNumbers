@@ -1,16 +1,7 @@
 # number_puzzle_game
 
-A new Flutter project.
+A Flutter mobile game based off [this puzzle](https://community.hubitat.com/uploads/default/original/3X/6/a/6af5f030af6bb5b5f684b79fe16e4ca30ae9d595.jpeg).
 
-## Getting Started
+It is only a 3 x 3 but hope to make it for any size square grid > 2 x 2
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![app screenshot](screenshot.png)
