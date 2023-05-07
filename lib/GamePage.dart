@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'dart:async';
 import 'package:duration/duration.dart';
 
-
 import './winPage.dart';
 import './NumberTiles.dart';
 
@@ -51,7 +50,7 @@ class _GamePageState extends State<GamePage> {
       ),
     );
   }
-  
+
   void onTileMoved(List<int> numbers) async {
     HapticFeedback.selectionClick();
     if (listEquals(numbers, [1, 2, 3, 4, 5, 6, 7, 8, 0])) {
@@ -200,7 +199,7 @@ class _GamePageState extends State<GamePage> {
   List<Widget> _generateTileList(List<int> numbers, int rowStartIndex) {
     List<Widget> tileList = [];
     for (int i = rowStartIndex; i < rowStartIndex + 3; i++) {
-      tileList.add(NumberTile("Hello World", onTileMoved, numbers, i));
+      tileList.add(NumberTile(onTileMoved, numbers, i));
     }
     return tileList;
   }
@@ -208,7 +207,7 @@ class _GamePageState extends State<GamePage> {
   List<Widget> tileListGenerator(listOfNumbers, rowStartPoint, callback) {
     List<Widget> tileList = [];
     for (int i = rowStartPoint; i < rowStartPoint + 3; i++) {
-      tileList.add(NumberTile("Hello World", callback, listOfNumbers, i));
+      tileList.add(NumberTile(callback, listOfNumbers, i));
     }
     return tileList;
   }

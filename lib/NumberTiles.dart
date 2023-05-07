@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class NumberTile extends StatefulWidget {
-  String abc;
   Function(List<int>) callback;
   List numbers;
   int value;
 
-  NumberTile(this.abc, this.callback, this.numbers, this.value);
+  NumberTile(this.callback, this.numbers, this.value);
 
   @override
   _NumberTileState createState() => new _NumberTileState();
@@ -23,6 +22,7 @@ class _NumberTileState extends State<NumberTile> {
   Widget build(BuildContext context) {
     if (widget.numbers[widget.value] != 0) {
       return GestureDetector(
+        key: ValueKey<int>(widget.numbers[widget.value]),
         onPanUpdate: (details) {
           if (details.delta.dx > 0) {
             if (widget.numbers[widget.value + 1] == 0) {

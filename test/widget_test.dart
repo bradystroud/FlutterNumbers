@@ -23,5 +23,15 @@ void main() {
     final titleFinder = find.text("Solve the puzzle");
     expect(titleFinder, findsOneWidget);
   });
-}
 
+  testWidgets('Tile list is generated correctly', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(home: GamePage()));
+
+    final keys = [1, 2, 3, 4, 5, 6, 7, 8];
+
+    for (var key in keys) {
+      expect(find.byKey(ValueKey(key)), findsOneWidget);
+      expect(find.text('$key'), findsOneWidget);
+    }
+  });
+}
