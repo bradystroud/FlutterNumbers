@@ -56,7 +56,7 @@ class _WinPageState extends State<WinPage> {
                 numberOfParticles: 20,
                 confettiController: _controllerCenter,
                 blastDirectionality: BlastDirectionality
-                    .explosive, // don't specify a direction, blast randomly
+                    .explosive,
                 shouldLoop: false,
               ),
               Padding(padding: EdgeInsets.only(top: 50)),

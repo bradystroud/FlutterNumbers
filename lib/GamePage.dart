@@ -14,7 +14,7 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   Timer _timer;
   int _start = 0;
-  List<int> listOfNumbers = numberListGenerator(); //GENERATES LIST [1, 2...9]
+  List<int> listOfNumbers = initTileList();
   int moveCount;
   String formattedStart = '0';
 

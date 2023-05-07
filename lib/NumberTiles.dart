@@ -21,7 +21,6 @@ class _NumberTileState extends State<NumberTile> {
 
   @override
   Widget build(BuildContext context) {
-    // print(numbers.toString() + "   THESE ARE NUMBERS");
     if (widget.numbers[widget.value] != 0) {
       return GestureDetector(
         onPanUpdate: (details) {
@@ -37,7 +36,6 @@ class _NumberTileState extends State<NumberTile> {
               setState(() {});
             }
           } else if (details.delta.dx < 0) {
-            print("left");
             if (widget.numbers[widget.value - 1] == 0) {
               // animate(Offset(0, -1.0));
               widget.numbers[widget.value - 1] = widget.numbers[widget.value];
@@ -48,7 +46,6 @@ class _NumberTileState extends State<NumberTile> {
               setState(() {});
             } //if != 3 or 6
           } else if (details.delta.dy < 0) {
-            print("up");
             if (widget.numbers[widget.value - 3] == 0) {
               // animate(Offset(1.0, 0));
               widget.numbers[widget.value - 3] = widget.numbers[widget.value];
@@ -114,21 +111,18 @@ class _NumberTileState extends State<NumberTile> {
   }
 }
 
-List<int> numberListGenerator() {
+List<int> initTileList() {
   Random random = Random();
-  // List<int> listOfNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   List<int> listOfNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 
-  // Uncomment lines below to randomise tiles .
+  // Randomise list
+  for (var i = listOfNumbers.length - 1; i > 0; i--) {
+    var n = random.nextInt(i + 1);
 
-  // Pick a pseudorandom number according to the list length
-  // for (var i = listOfNumbers.length - 1; i > 0; i--) {
-  //   var n = random.nextInt(i + 1);
-
-  //   var temp = listOfNumbers[i];
-  //   listOfNumbers[i] = listOfNumbers[n];
-  //   listOfNumbers[n] = temp;
-  // }
+    final temp = listOfNumbers[i];
+    listOfNumbers[i] = listOfNumbers[n];
+    listOfNumbers[n] = temp;
+  }
 
   return listOfNumbers;
 }

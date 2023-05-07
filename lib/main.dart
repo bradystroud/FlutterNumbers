@@ -4,7 +4,6 @@ import 'package:number_puzzle_game/LandingPage.dart';
 void main() => runApp(new NumberPuzzleApp());
 
 class NumberPuzzleApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +13,6 @@ class NumberPuzzleApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: LandingPage(),
-      // home: MyHomePage(),
     );
   }
 }
