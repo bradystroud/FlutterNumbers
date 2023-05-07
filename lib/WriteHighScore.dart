@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 
 class ScoreModel {
-  int moveCount;
+  int moveCount = 0;
   int time;
 
   ScoreModel({this.moveCount, this.time});
@@ -21,14 +21,16 @@ class ScoreModel {
       };
 }
 
+Future<File> getFilePath() async {
+  Directory dir = await getApplicationDocumentsDirectory();
+  return File('${dir.path}/highscores.txt');
+}
+
 Future<ScoreModel> readHighScore() async {
   try {
-    Directory dir = await getApplicationDocumentsDirectory();
-    File file = File('${dir.path}/highscores.txt');
+    var file = await getFilePath();
 
-    // Read the file.
     if (await file.exists()) {
-      // Read file
       String contents = await file.readAsString();
 
       Map<String, dynamic> contentDecoded = jsonDecode(contents);
@@ -40,7 +42,7 @@ Future<ScoreModel> readHighScore() async {
       return ScoreModel(moveCount: 0, time: 0);
     }
   } catch (e) {
-    print("  ERROR  "*10);
+    print("  ERROR  " * 10);
     return ScoreModel(moveCount: 0, time: 0);
   }
 }

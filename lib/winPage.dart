@@ -3,6 +3,7 @@ import 'package:confetti/confetti.dart';
 import 'package:duration/duration.dart';
 
 import './WriteHighScore.dart';
+import 'LandingPage.dart';
 
 class WinPage extends StatefulWidget {
   final int moveCount;
@@ -19,8 +20,7 @@ class _WinPageState extends State<WinPage> {
   ScoreModel highScores;
 
   void initState() {
-    writeHighScore(widget.moveCount, int.parse(widget.time))
-        .then((value) {
+    writeHighScore(widget.moveCount, int.parse(widget.time)).then((value) {
       highScores = value;
       setState(() {});
     });
@@ -44,7 +44,9 @@ class _WinPageState extends State<WinPage> {
           leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
-                Navigator.pop(context, 0);
+                Navigator.of(context).popUntil((route) {
+                  return route.settings.name == "/";
+                });
               }),
         ),
         body: Center(
@@ -55,8 +57,7 @@ class _WinPageState extends State<WinPage> {
                 minBlastForce: 1,
                 numberOfParticles: 20,
                 confettiController: _controllerCenter,
-                blastDirectionality: BlastDirectionality
-                    .explosive,
+                blastDirectionality: BlastDirectionality.explosive,
                 shouldLoop: false,
               ),
               Padding(padding: EdgeInsets.only(top: 50)),
@@ -80,7 +81,7 @@ class _WinPageState extends State<WinPage> {
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    'Time: ' + printDuration(aSecond * int.parse(widget.time) ),
+                    'Time: ' + printDuration(aSecond * int.parse(widget.time)),
                     style: TextStyle(fontSize: 30),
                     textAlign: TextAlign.center,
                   ),
@@ -99,12 +100,12 @@ class _WinPageState extends State<WinPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'Moves: ' + highScores.moveCount.toString(),
+                    'Moves: ${highScores?.moveCount?.toString() ?? ""}',
                     style: TextStyle(fontSize: 30),
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    'Time: ' + highScores.time.toString(),
+                    'Time: ${highScores?.time?.toString() ?? ""}',
                     style: TextStyle(fontSize: 30),
                     textAlign: TextAlign.center,
                   ),

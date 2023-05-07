@@ -3,7 +3,7 @@ import 'dart:math';
 
 class NumberTile extends StatefulWidget {
   String abc;
-  Function(String) callback;
+  Function(List<int>) callback;
   List numbers;
   int value;
 
@@ -29,7 +29,7 @@ class _NumberTileState extends State<NumberTile> {
               // animate(Offset(0, 1));
               widget.numbers[widget.value + 1] = widget.numbers[widget.value];
               widget.numbers[widget.value] = 0;
-              widget.callback(widget.numbers.toString());
+              widget.callback(widget.numbers);
               // animate(Offset(0, 1));
               // _controller.forward();
 
@@ -40,7 +40,7 @@ class _NumberTileState extends State<NumberTile> {
               // animate(Offset(0, -1.0));
               widget.numbers[widget.value - 1] = widget.numbers[widget.value];
               widget.numbers[widget.value] = 0;
-              widget.callback(widget.numbers.toString());
+              widget.callback(widget.numbers);
               // animate(Offset(0, -1.0));
               // _controller.forward();
               setState(() {});
@@ -50,7 +50,7 @@ class _NumberTileState extends State<NumberTile> {
               // animate(Offset(1.0, 0));
               widget.numbers[widget.value - 3] = widget.numbers[widget.value];
               widget.numbers[widget.value] = 0;
-              widget.callback(widget.numbers.toString());
+              widget.callback(widget.numbers);
               // animate(Offset(1.0, 0));
               // _controller.forward();
               setState(() {});
@@ -60,7 +60,7 @@ class _NumberTileState extends State<NumberTile> {
             if (widget.numbers[widget.value + 3] == 0) {
               widget.numbers[widget.value + 3] = widget.numbers[widget.value];
               widget.numbers[widget.value] = 0;
-              widget.callback(widget.numbers.toString());
+              widget.callback(widget.numbers);
               // animate(Offset(-1.0, 0));
               // _controller.forward();
               setState(() {});
@@ -116,13 +116,13 @@ List<int> initTileList() {
   List<int> listOfNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 
   // Randomise list
-  for (var i = listOfNumbers.length - 1; i > 0; i--) {
-    var n = random.nextInt(i + 1);
+  // for (var i = listOfNumbers.length - 1; i > 0; i--) {
+  //   var n = random.nextInt(i + 1);
 
-    final temp = listOfNumbers[i];
-    listOfNumbers[i] = listOfNumbers[n];
-    listOfNumbers[n] = temp;
-  }
+  //   final temp = listOfNumbers[i];
+  //   listOfNumbers[i] = listOfNumbers[n];
+  //   listOfNumbers[n] = temp;
+  // }
 
   return listOfNumbers;
 }

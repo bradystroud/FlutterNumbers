@@ -31,7 +31,7 @@ class LandingPage extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+                    Radius.circular(10),
                   ),
                   color: Colors.blue),
               child: Padding(
