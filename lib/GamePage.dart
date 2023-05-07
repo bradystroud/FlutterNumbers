@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'dart:async';
 import 'package:duration/duration.dart';
 
-
 import './winPage.dart';
 import './NumberTiles.dart';
 
@@ -51,7 +50,7 @@ class _GamePageState extends State<GamePage> {
       ),
     );
   }
-  
+
   void onTileMoved(List<int> numbers) async {
     HapticFeedback.selectionClick();
     if (listEquals(numbers, [1, 2, 3, 4, 5, 6, 7, 8, 0])) {
