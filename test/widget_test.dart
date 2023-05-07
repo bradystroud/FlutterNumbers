@@ -7,24 +7,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:number_puzzle_game/main.dart';
+import 'package:number_puzzle_game/GamePage.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(NumberPuzzleApp());
+  testWidgets('GamePage renders correctly', (WidgetTester tester) async {
+    // Build the GamePage widget
+    await tester.pumpWidget(MaterialApp(home: GamePage()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Find the AppBar
+    final appBarFinder = find.byType(AppBar);
+    expect(appBarFinder, findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Find the title text inside the AppBar
+    final titleFinder = find.text("Solve the puzzle");
+    expect(titleFinder, findsOneWidget);
   });
 }
+
