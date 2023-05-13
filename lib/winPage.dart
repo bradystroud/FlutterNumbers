@@ -3,7 +3,6 @@ import 'package:confetti/confetti.dart';
 import 'package:duration/duration.dart';
 
 import './WriteHighScore.dart';
-import 'LandingPage.dart';
 
 class WinPage extends StatefulWidget {
   final int moveCount;
