@@ -15,8 +15,8 @@ class WinPage extends StatefulWidget {
 }
 
 class _WinPageState extends State<WinPage> {
-  ConfettiController _controllerCenter;
-  ScoreModel highScores;
+  late ConfettiController _controllerCenter;
+  late ScoreModel highScores;
 
   void initState() {
     writeHighScore(widget.moveCount, int.parse(widget.time)).then((value) {

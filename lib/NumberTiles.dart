@@ -3,7 +3,7 @@ import 'dart:math';
 
 class NumberTile extends StatefulWidget {
   final Function(List<int>) callback;
-  final List numbers;
+  final List<int> numbers;
   final int value;
 
   NumberTile(this.callback, this.numbers, this.value);
