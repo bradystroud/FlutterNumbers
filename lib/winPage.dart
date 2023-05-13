@@ -99,12 +99,12 @@ class _WinPageState extends State<WinPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'Moves: ${highScores?.moveCount?.toString() ?? ""}',
+                    'Moves: ${highScores.moveCount.toString()}',
                     style: TextStyle(fontSize: 30),
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    'Time: ${highScores?.time?.toString() ?? ""}',
+                    'Time: ${highScores.time.toString()}',
                     style: TextStyle(fontSize: 30),
                     textAlign: TextAlign.center,
                   ),
