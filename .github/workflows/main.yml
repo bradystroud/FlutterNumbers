@@ -1,0 +1,43 @@
+name: Deploy to TestFlight
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - run: npm ci
+    - run: npm run build --if-present
+
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '2.x'
+
+    - run: flutter pub get
+
+    - name: Install Fastlane
+      run: |
+        brew install rbenv
+        rbenv init
+        rbenv install 2.7.2
+        rbenv global 2.7.2
+        gem install fastlane
+
+    - name: Deploy to TestFlight
+      run: fastlane ios beta
+      env:
+        APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
