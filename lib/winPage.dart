@@ -3,7 +3,6 @@ import 'package:confetti/confetti.dart';
 import 'package:duration/duration.dart';
 
 import './WriteHighScore.dart';
-import 'LandingPage.dart';
 
 class WinPage extends StatefulWidget {
   final int moveCount;
@@ -16,8 +15,8 @@ class WinPage extends StatefulWidget {
 }
 
 class _WinPageState extends State<WinPage> {
-  ConfettiController _controllerCenter;
-  ScoreModel highScores;
+  late ConfettiController _controllerCenter;
+  ScoreModel highScores = new ScoreModel(moveCount: 0, time: 0);
 
   void initState() {
     writeHighScore(widget.moveCount, int.parse(widget.time)).then((value) {
@@ -100,12 +99,12 @@ class _WinPageState extends State<WinPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'Moves: ${highScores?.moveCount?.toString() ?? ""}',
+                    'Moves: ${highScores.moveCount.toString()}',
                     style: TextStyle(fontSize: 30),
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    'Time: ${highScores?.time?.toString() ?? ""}',
+                    'Time: ${highScores.time.toString()}',
                     style: TextStyle(fontSize: 30),
                     textAlign: TextAlign.center,
                   ),

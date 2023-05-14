@@ -9,7 +9,7 @@ class ScoreModel {
   int moveCount = 0;
   int time;
 
-  ScoreModel({this.moveCount, this.time});
+  ScoreModel({required this.moveCount, required this.time});
 
   ScoreModel.fromJson(Map<String, dynamic> json)
       : moveCount = json['moveCount'],

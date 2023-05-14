@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class NumberTile extends StatefulWidget {
-  Function(List<int>) callback;
-  List numbers;
-  int value;
+  final Function(List<int>) callback;
+  final List<int> numbers;
+  final int value;
 
   NumberTile(this.callback, this.numbers, this.value);
 
@@ -112,17 +112,23 @@ class _NumberTileState extends State<NumberTile> {
 }
 
 List<int> initTileList() {
-  Random random = Random();
-  List<int> listOfNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+  var rng = Random();
+  List<int> puzzle =
+      List<int>.generate(9, (i) => i); // [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  int inversions;
 
-  // Randomise list
-  // for (var i = listOfNumbers.length - 1; i > 0; i--) {
-  //   var n = random.nextInt(i + 1);
+  do {
+    puzzle.shuffle(rng);
+    inversions = 0;
 
-  //   final temp = listOfNumbers[i];
-  //   listOfNumbers[i] = listOfNumbers[n];
-  //   listOfNumbers[n] = temp;
-  // }
+    for (int i = 0; i < 9; i++) {
+      for (int j = i + 1; j < 9; j++) {
+        if (puzzle[i] != 0 && puzzle[j] != 0 && puzzle[i] > puzzle[j]) {
+          inversions++;
+        }
+      }
+    }
+  } while (inversions % 2 != 0); // Ensure the puzzle is solvable
 
-  return listOfNumbers;
+  return puzzle;
 }

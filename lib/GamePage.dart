@@ -13,10 +13,10 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-  Timer _timer;
+  late Timer _timer;
   int _elapsedTime = 0;
   List<int> listOfNumbers = initTileList();
-  int moveCount;
+  late int moveCount;
   String formattedElapsedTime = '0';
 
   bool dragComplete = true;
@@ -133,7 +133,7 @@ class _GamePageState extends State<GamePage> {
   void _onVerticalDragUpdate(DragUpdateDetails details) {
     if (dragComplete) {
       dragComplete = false;
-      int nullPosition;
+      int nullPosition = 0;
       for (int i = 0; i < 9; i++) {
         if (listOfNumbers[i] == 0) {
           nullPosition = i;
@@ -169,7 +169,7 @@ class _GamePageState extends State<GamePage> {
   void _onHorizontalDragUpdate(DragUpdateDetails details) {
     if (dragComplete) {
       dragComplete = false;
-      int nullPosition;
+      int nullPosition = 0;
       for (int i = 0; i < 9; i++) {
         if (listOfNumbers[i] == 0) {
           nullPosition = i;
