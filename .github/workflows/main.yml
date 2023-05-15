@@ -21,8 +21,8 @@ jobs:
       run: |
         brew install rbenv
         rbenv init
-        rbenv install 2.7.2
-        rbenv global 2.7.2
+        rbenv install 3.2.2
+        rbenv global 3.2.2
         gem install fastlane
 
     - name: Deploy to TestFlight
