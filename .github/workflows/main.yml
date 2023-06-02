@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v3
@@ -17,13 +17,14 @@ jobs:
         channel: 'stable'
     - run: flutter pub get
 
-    - name: Install Fastlane
-      run: |
-        brew install rbenv
-        rbenv init
-        rbenv install 3.2.2
-        rbenv global 3.2.2
-        gem install fastlane
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2.2
+        bundler-cache: true # this will automatically install Bundler and gems listed in Gemfile.lock, and cache them between builds
+
+    - name: Install fastlane
+      run: gem install fastlane
 
     - name: Deploy to TestFlight
       run: fastlane ios beta
