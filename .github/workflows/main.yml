@@ -27,6 +27,7 @@ jobs:
       run: gem install fastlane
 
     - name: Deploy to TestFlight
+      working-directory: ./ios
       run: fastlane ios beta
       env:
         APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
